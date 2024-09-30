@@ -1,11 +1,11 @@
 
 clear all
 close all
-cd '/Users/Akrosh/OneDrive - rit.edu/RIT/Semester-2/Machine Learning/Project/Apartement Data/apartment/2016'
-%C:\Users\Akrosh\OneDrive - rit.edu\RIT\Semester-2\Machine Learning\Project\Apartement Data\apartment\2016
-addpath '/Users/akash/OneDrive - rit.edu/RIT/Semester-2/Machine Learning/Project/Apartement Data/apartment-weather'
+cd 'Add your file extensions'
+
+addpath 'add your file extension'
 %Read weather data
-Wfilename = 'apartment2016_Master.csv'; % abc = name of data file
+Wfilename = ''; % abc = name of data file
 Weatherdata = readtable(Wfilename);
 DataArray=table2cell(Weatherdata);
 % Weather data (X)
@@ -60,21 +60,8 @@ trnX = FinalWeatherdata(1:trn,:);
 
 testY = FinalLoadData(trn+1:end,:);
 testX = FinalWeatherdata(trn+1:end,:);
-%testX=cell2mat(testX);
-%net = newfit(trnX',trnY',20); %50 %25
-net  = fitnet; 
-% hiddenLayerSize = 25;%25
-% setdemorandstream(2014784333); %seed for random number generator
-% net = patternnet(hiddenLayerSize);
-% % Set up Division of Data for Training, Validation, Testing
-% net.divideParam.trainRatio = 0.8; %note- splits are done in a random fashion
-% net.divideParam.valRatio = 0.1;
-% net.divideParam.testRatio = 0.1;
-%
- %net.layers{1}.transferFcn = 'ReLU';
-% net.layers{2}.transferFcn = 'logsig';
 
-%
+net  = fitnet; 
 [net,tr] = train(net, trnX', trnY');
 perf = perform(net,trnX', trnY')
 plotperform(tr);
